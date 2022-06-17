@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:fff/category.dart';
-import 'package:fff/main.dart';
 
 class GetJoke {
   var _dio = Dio(BaseOptions(baseUrl: ""));

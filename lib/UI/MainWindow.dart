@@ -1,7 +1,8 @@
+import 'package:fff/favourite.dart';
 import 'package:fff/UI/ChooseWindow.dart';
 import 'package:flutter/material.dart';
 import '../get_joke.dart';
-import '../translator.dart';
+import 'FavouriteWindow.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -28,7 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _update () async {
     final GetJoke getJoke = GetJoke();
-    final Translator translatePhrase = Translator();
     String joke = await getJoke.getRandomJoke();
     setState(() {
       _phrase = joke;
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               bottom: 30,
               left: 100,
               child: FloatingActionButton(
-                onPressed: () {_update();},
+                onPressed: () {pushJoke(_phrase); _update();},
                 child: const Icon(
                   Icons.favorite,
                   size: 40,
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: FloatingActionButton(
                 onPressed: () {_update;Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ChooseWindow()),
+                  MaterialPageRoute(builder: (context) => const FavouriteWindow()),
                 );
                 },
                 child: const Icon(
